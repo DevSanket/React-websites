@@ -4,11 +4,13 @@ import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
-import Counter from './Counter/counter';
+import 'font-awesome/css/font-awesome.css';
+// import Counter from './Counter/counter';
+import Vidly from './vidly/vidly';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Counter/>
+    <Vidly/>
   </React.StrictMode>,
   document.getElementById('root')
 );
