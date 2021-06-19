@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import "./CheckIncome.scss";
-import EditIcon from "../../assets/edit-icon.png";
-import DeleteButton from "../../assets/delete-button.png";
-import FormInput from "../../Components/form-input/form-input";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "../../Redux/user/user.selector";
-import { connect } from "react-redux";
-import { useEffect } from "react";
-import firebase from "firebase";
+import FormInput from "../../Components/form-input/form-input";
+import "./CheckExpenses.scss";
 import { db } from "../../Firebase/firebase.utils";
-const CheckIncome = ({ currentUser }) => {
-  // const [open, setOpen] = useState(false);
+import EditIcon from "../../assets/edit-icon.png";
+import DeleteButton from "../../assets/delete-button.png";
+import firebase from "firebase";
+
+
+const CheckExpense = ({ currentUser }) => {
   const [money, setMoney] = useState("");
   const [msg, setMsg] = useState("");
-  const [Income, SetIncome] = useState([]);
+  const [Expence, SetExpence] = useState([]);
 
   useEffect(() => {
     const userId = currentUser.id;
@@ -21,11 +21,11 @@ const CheckIncome = ({ currentUser }) => {
     // const userDatabase = firestore.collection('expence_users').doc(userId).collection('Incomes');
     db.collection("expence_users")
       .doc(userId)
-      .collection("Incomes")
+      .collection("Expenses")
       .orderBy("Date", "desc")
       .onSnapshot((snapshot) => {
         console.log(snapshot);
-        SetIncome(
+        SetExpence(
           snapshot.docs.map((doc) => ({
             id: doc.id,
             money: doc.data().money,
@@ -36,12 +36,10 @@ const CheckIncome = ({ currentUser }) => {
       });
   }, []);
 
-  // console.log(Income);
-
   return (
-    <div className="check_Income">
+    <div className="check_expense">
       <div className="container">
-        <div className="title">Your Incomes</div>
+        <div className="title">Your Expenses</div>
         <span className="line"></span>
         <div className="update-form">
           <FormInput
@@ -61,18 +59,18 @@ const CheckIncome = ({ currentUser }) => {
             required
           />
         </div>
-        <div className="list-income">
-          {Income.map((income) => {
+        <div className="list-expense">
+          {Expence.map((expense) => {
             // const IncomeDate =  String(income.Date.toDate()).substr(0,15);
             return (
-              <div className="income">
-                <div className="income-amount">₹ {income.money}</div>
-                <p className="income-reason">Reason - : {income.reason}</p>
+              <div className="expense">
+                <div className="expense-amount">₹ {expense.money}</div>
+                <p className="expense-reason">Reason - : {expense.reason}</p>
                 <div className="Icons">
                   <div className="date">
                     Due -{" "}
-                    {income.Date
-                      ? String(income.Date.toDate()).substr(0, 15)
+                    {expense.Date
+                      ? String(expense.Date.toDate()).substr(0, 15)
                       : "Wait.."}
                   </div>
                   <div className="icon-buttons">
@@ -89,8 +87,8 @@ const CheckIncome = ({ currentUser }) => {
 
                         db.collection("expence_users")
                           .doc(userId)
-                          .collection("Incomes")
-                          .doc(income.id)
+                          .collection("Expenses")
+                          .doc(expense.id)
                           .set({
                             money: money,
                             Date: firebase.firestore.FieldValue.serverTimestamp(),
@@ -106,8 +104,8 @@ const CheckIncome = ({ currentUser }) => {
                           const userId = currentUser.id;
                           db.collection("expence_users")
                             .doc(userId)
-                            .collection("Incomes")
-                            .doc(income.id)
+                            .collection("Expenses")
+                            .doc(expense.id)
                             .delete();
                         }}
                         className="edit-icon"
@@ -135,4 +133,4 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 });
 
-export default connect(mapStateToProps)(CheckIncome);
+export default connect(mapStateToProps)(CheckExpense);

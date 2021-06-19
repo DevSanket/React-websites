@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import { auth, createUserProfileDocument } from "./Firebase/firebase.utils";
 import { Redirect } from "react-router-dom";
 import CheckIncome from "./Pages/CheckIncome/CheckIncome";
+import CheckExpenses from "./Pages/CheckExpenses/CheckExpenses";
 
 class App extends Component {
   state = {
@@ -59,6 +60,7 @@ class App extends Component {
             } />
             <Route path="/addData" component={AddData} />
             <Route path="/myIncome" component={CheckIncome} />
+            <Route path="/myExpense" component={CheckExpenses} />
             <Route
               exact
               path="/"

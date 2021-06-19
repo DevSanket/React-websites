@@ -18,7 +18,7 @@ class HomePage extends Component {
                 <div className="cards-container" >
                     <Card title={"ADD EXPENSE"} imgUrl={Money} Links="/addData" />
                     <Card title={"ADD EARNINGS"} imgUrl={Savings} Links="/addData" />
-                    <Card title={"SEE EXPENSES"} imgUrl={ExpenseChecking} Links="/addData" />
+                    <Card title={"SEE EXPENSES"} imgUrl={ExpenseChecking} Links="/myExpense" />
                     <Card title={"SEE INCOMES"} imgUrl={CheckSavings} Links="/myIncome"/>
                     <Card title={"ALL TRANSACTIONS"} imgUrl={AllTransactions} Links="/"/>
                     <Card title={"MY GOALS"} imgUrl={Goals} Links="/"/>

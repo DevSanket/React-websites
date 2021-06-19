@@ -29,6 +29,8 @@ class Expense_Card extends Component {
         const userId = currentUser.id;
         const userDatabase = firestore.collection('expence_users').doc(userId).collection('Expenses');
         let myDate = firebase.firestore.FieldValue.serverTimestamp();
+        
+        
         try{
           userDatabase.add({
             money:money,

@@ -1,4 +1,4 @@
-.check_Income{
+.check_expense{
     display: flex;
     height: 100%;
     width: 100%;
@@ -24,7 +24,7 @@
             border-radius: 20px;
         }
 
-        .list-income{
+        .list-expense{
             margin-top: 20px;
             padding: 10px;
             width: 100%;
@@ -33,7 +33,7 @@
             justify-content: center;
             align-content: center;
 
-            .income{
+            .expense{
                 height: auto;
                 padding: 10px;
                 width: 100%;
@@ -45,7 +45,7 @@
                 justify-content: center;
             }
 
-            .income-amount{
+            .expense-amount{
                 width: 100%;
                 font-size: 40px;
             }
