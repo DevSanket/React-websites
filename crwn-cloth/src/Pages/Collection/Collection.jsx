@@ -20,6 +20,8 @@ const CollectionPage = ({collection}) => {
 }
 
 const mapStateToProps = (state,ownProps) => {
+    console.log(ownProps);
+    console.log(state);
     return({
 
     collection : selectCollection(ownProps.match.params.categoryId)(state)

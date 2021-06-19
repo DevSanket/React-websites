@@ -1,40 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router";
-import CollectionOverview from "../../components/collections-overview/collection-overview";
-import WithSpinner from "../../components/with-spinner/with-spinner";
-import {
-  firestore,
-  convertCollectionsSnapshotToMap,
-} from "../../Firebase/firebase.utils";
-import { updateCollections } from "../../Redux/shop/shop.actions";
-import CollectionPage from "../Collection/Collection";
-
-const CollectionOverviewWithSpinner  = WithSpinner(CollectionOverview);
-const CollectionPageWithSpinner  = WithSpinner(CollectionPage);
+import CollectionsOverviewContainer from "../../components/collections-overview/collection-overview.container";
+import { fetchCollectionStart } from "../../Redux/shop/shop.actions";
+import CollectionPageContainer from "../Collection/Collection.container";
 
 
 class ShopPage extends React.Component {
-  state = {
-    loading: true,
-  };
-
-  unsubscribeFromSnapshot = null;
   componentDidMount() {
-    const { updateCollections } = this.props;
-    const collectionRef = firestore.collection("collections");
 
+      //Using the redux-thunk or Asyncronus Redux
+
+    const { fetchCollectionStart} = this.props;
+    fetchCollectionStart();
+    
+     // Old Approch
     //So complicated to get the data from firebase
     // fetch('https://firestore.googleapis.com/v1/projects/crwn-db-39f39/databases/(default)/documents/collections')
     // .then(response => response.json())
     // .then(collections => console.log(collections));
 
     //using promises
-    collectionRef.get().then((snapshot) => {
-      const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-      updateCollections(collectionsMap);
-      this.setState({loading:false});
-    });
+    // const collectionRef = firestore.collection("collections");
+    // collectionRef.get().then((snapshot) => {
+    //   const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+    //   updateCollections(collectionsMap);
+    //   this.setState({loading:false});
+    // });
 
     // this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async (snapshot) => {
     //   const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
@@ -44,11 +36,10 @@ class ShopPage extends React.Component {
   }
   render() {
     const { match } = this.props;
-    const {loading} = this.state;
     return (
       <div className="shop-page">
-        <Route exact path={`${match.path}`}  render={(props) => <CollectionOverviewWithSpinner isLoading={loading} {...props} />}/>
-        <Route path={`${match.path}/:categoryId`} component={(props) => <CollectionPageWithSpinner isLoading={loading} {...props}/>} />
+        <Route exact path={`${match.path}`}  component={CollectionsOverviewContainer} />
+        <Route path={`${match.path}/:categoryId`} component={CollectionPageContainer} />
       </div>
     );
   }
@@ -63,9 +54,9 @@ class ShopPage extends React.Component {
 //    );
 // }
 
+
 const mapDispatchToProps = (dispatch) => ({
-  updateCollections: (collectionMap) =>
-    dispatch(updateCollections(collectionMap)),
+  fetchCollectionStart : () => dispatch(fetchCollectionStart())
 });
 
 export default connect(null, mapDispatchToProps)(ShopPage);
