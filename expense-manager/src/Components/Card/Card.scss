@@ -1,0 +1,87 @@
+
+
+  
+  .card {
+    width: 20rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+
+    .img{
+      height: 10rem;
+      width: 15rem;
+      align-items: center;
+      
+      position: relative;
+      border-radius: 10px;
+    }
+
+  }
+  
+  .card:before {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%);
+    content: '';
+    height: 100%;
+    border-radius: 10px;
+    position: absolute;
+    width: 100%;
+
+    .img{
+      height: 10rem;
+      width: 10rem;
+      border-radius: 10px;
+    }
+  
+
+  }
+  
+  .card svg {
+    bottom: 30px;
+    position: absolute;
+    right: 30px;
+  }
+  
+  
+ 
+  .card__text {
+    color: #6f7886;
+    margin-left: 30px;
+    margin-top: 100px;
+    position: relative;
+    z-index: 2;
+  }
+
+  
+  .btn-grad {background-image: linear-gradient(to right, #DA22FF 0%, #9733EE  51%, #DA22FF  100%)}
+  .btn-grad {
+     margin: 10px;
+     padding: 10px 20px;
+     text-align: center;
+     text-transform: uppercase;
+     position: inherit;
+     transition: 0.5s;
+     background-size: 200% auto;
+     color: white; 
+     border: none;           
+     box-shadow: 0 0 20px #eee;
+     border-radius: 10px;
+     display: block;
+
+     .btn-text{
+      margin-bottom: -10px;
+     }
+   }
+
+   .btn-grad:hover {
+     background-position: right center; /* change the direction of the change here */
+     color: #fff;
+     text-decoration: none;
+   }
+  

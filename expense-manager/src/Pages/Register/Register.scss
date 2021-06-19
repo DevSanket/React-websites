@@ -1,0 +1,144 @@
+.register{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    .title{
+        font-size: 32px;
+    }
+
+    .sign-up{
+    width: 30%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+
+    .sign-up-form{
+        width: 100%;
+        padding-top: 30px;
+        padding-bottom: 4%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        
+
+        
+    
+    }
+    
+
+}
+}
+
+.line{
+    height: 2px;
+    width: 40%;
+    background-color: white;
+    border: 1px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.mybuttons{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    .btn-grad {background-image: linear-gradient(to right, #DA22FF 0%, #9733EE  51%, #DA22FF  100%)}
+.btn-grad {
+ margin: 10px;
+ padding: 10px 20px;
+ text-align: center;
+ text-transform: uppercase;
+ position: inherit;
+ transition: 0.5s;
+ background-size: 200% auto;
+ color: white; 
+ border: none;           
+ box-shadow: 0 0 20px #eee;
+ border-radius: 10px;
+ display: block;
+
+ .btn-text{
+  margin-bottom: -10px;
+ }
+}
+
+.btn-grad:hover {
+ background-position: right center; /* change the direction of the change here */
+ color: #fff;
+ text-decoration: none;
+}
+
+
+}
+
+$white: #fff;
+$google-blue: #4285f4;
+$button-active-blue: #1669F2;
+
+.google-btn {
+  width: 184px;
+  height: 42px;
+  margin-bottom: 20px;
+  background-color: $google-blue;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+  .google-icon-wrapper {
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    background-color: $white;
+  }
+  .google-icon {
+    position: absolute;
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 18px;
+    height: 18px;
+  }
+  .btn-text {
+    float: right;
+    margin: 11px 11px 0 0;
+    color: $white;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+    // font-family: "Roboto";
+  }
+  &:hover {
+    box-shadow: 0 0 6px $google-blue;
+  }
+  &:active {
+    background: $button-active-blue;
+  }
+}
+
+
+.Note{
+    // border: 1px solid black;
+    // text-align: center;
+    // padding-top: 5px;
+    // padding-right: 5px;
+    // padding-left: 5px;
+    // padding-bottom: -5px;
+    margin: 10px;
+    color: red;
+}
