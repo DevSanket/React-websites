@@ -25,10 +25,10 @@ const Header = ({currentUser}) => {
                 {/* <Link to="/" className="option">
                   Earnings
                 </Link> */}
-                <Link to="/" className="option">
+                {/* <Link to="/" className="option">
                   Money Goals
-                </Link>
-                <Link to="/" className="option">
+                </Link> */}
+                <Link to="/alltransaction" className="option">
                   All Transaction
                 </Link>
                 <Link to="/register" className="option">

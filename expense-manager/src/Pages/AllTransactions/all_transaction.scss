@@ -1,0 +1,148 @@
+.all_transaction {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  .title {
+    height: 20%;
+    width: 100%;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .heading {
+      font-size: 40px;
+    }
+  }
+
+  .income_and_expense {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .income-card {
+      height: 60vh;
+      width: 30%;
+      margin: 20px;
+      padding: 20px;
+      border: solid 1px white;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      display: flex;
+      flex-direction: column;
+    //   justify-content: center;
+      align-items: center;
+      overflow: scroll;
+
+      .line-text{
+        height: 2px;
+        width: 40%;
+        background-color: white;
+        border: 1px;
+        border-radius: 50px;
+        margin-bottom: 20px;
+    }
+
+      .inside-title{
+          font-size: 20px;
+      }
+
+      .list-income{
+          height: auto;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          
+
+          .income-data{
+              display: flex;
+              justify-content: space-around;
+
+              .money{
+                  height: 20px;
+                  width: 70px;
+                  display: flex;
+                  text-align: start;
+              }
+          }
+      }
+
+      
+    }
+
+    .income-card::-webkit-scrollbar {
+        display: none;
+      }
+
+      .expense-card {
+        height: 60vh;
+        width: 30%;
+        margin: 20px;
+        padding: 20px;
+        border: solid 1px white;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+        overflow: scroll;
+  
+        .line-text{
+          height: 2px;
+          width: 40%;
+          background-color: white;
+          border: 1px;
+          border-radius: 50px;
+          margin-bottom: 20px;
+      }
+  
+        .inside-title{
+            font-size: 20px;
+        }
+  
+        .list-expense{
+            height: auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            
+  
+            .income-data{
+                display: flex;
+                justify-content: space-around;
+  
+                .money{
+                    height: 20px;
+                    width: 70px;
+                    display: flex;
+                    text-align: start;
+                }
+            }
+        }
+  
+        
+      }
+  }
+
+  .expense-card::-webkit-scrollbar {
+    display: none;
+  }
+
+  
+.line{
+    height: 2px;
+    width: 40%;
+    background-color: white;
+    border: 1px;
+    border-radius: 20px;
+}
+  
+}

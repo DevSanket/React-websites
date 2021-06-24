@@ -34,7 +34,7 @@ const CheckIncome = ({ currentUser }) => {
           }))
         );
       });
-  }, []);
+  });
 
   // console.log(Income);
 
@@ -65,7 +65,7 @@ const CheckIncome = ({ currentUser }) => {
           {Income.map((income) => {
             // const IncomeDate =  String(income.Date.toDate()).substr(0,15);
             return (
-              <div className="income">
+              <div className="income" key={income.id}>
                 <div className="income-amount">₹ {income.money}</div>
                 <p className="income-reason">Reason - : {income.reason}</p>
                 <div className="Icons">

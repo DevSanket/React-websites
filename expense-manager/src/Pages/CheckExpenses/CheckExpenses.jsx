@@ -17,6 +17,7 @@ const CheckExpense = ({ currentUser }) => {
 
   useEffect(() => {
     const userId = currentUser.id;
+
     // console.log(userId);
     // const userDatabase = firestore.collection('expence_users').doc(userId).collection('Incomes');
     db.collection("expence_users")
@@ -24,7 +25,7 @@ const CheckExpense = ({ currentUser }) => {
       .collection("Expenses")
       .orderBy("Date", "desc")
       .onSnapshot((snapshot) => {
-        console.log(snapshot);
+        // console.log(snapshot);
         SetExpence(
           snapshot.docs.map((doc) => ({
             id: doc.id,
@@ -34,7 +35,7 @@ const CheckExpense = ({ currentUser }) => {
           }))
         );
       });
-  }, []);
+  });
 
   return (
     <div className="check_expense">
@@ -63,7 +64,7 @@ const CheckExpense = ({ currentUser }) => {
           {Expence.map((expense) => {
             // const IncomeDate =  String(income.Date.toDate()).substr(0,15);
             return (
-              <div className="expense">
+              <div className="expense" key={expense.id}>
                 <div className="expense-amount">₹ {expense.money}</div>
                 <p className="expense-reason">Reason - : {expense.reason}</p>
                 <div className="Icons">
@@ -83,9 +84,8 @@ const CheckExpense = ({ currentUser }) => {
                         if (!msg || !money) {
                           alert("Fill Both Two Fields");
                           return;
-                        }
-
-                        db.collection("expence_users")
+                        }else{
+                          db.collection("expence_users")
                           .doc(userId)
                           .collection("Expenses")
                           .doc(expense.id)
@@ -94,20 +94,12 @@ const CheckExpense = ({ currentUser }) => {
                             Date: firebase.firestore.FieldValue.serverTimestamp(),
                             reason: msg,
                           });
-
+                        }
                         setMsg("");
                         setMoney("");
                       }}
                     >
                       <img
-                        onClick={() => {
-                          const userId = currentUser.id;
-                          db.collection("expence_users")
-                            .doc(userId)
-                            .collection("Expenses")
-                            .doc(expense.id)
-                            .delete();
-                        }}
                         className="edit-icon"
                         src={EditIcon}
                         alt="Edit Icon"
@@ -115,6 +107,14 @@ const CheckExpense = ({ currentUser }) => {
                     </button>
                     <img
                       className="edit-icon"
+                      onClick={() => {
+                        const userId = currentUser.id;
+                        db.collection("expence_users")
+                          .doc(userId)
+                          .collection("Expenses")
+                          .doc(expense.id)
+                          .delete();
+                      }}
                       src={DeleteButton}
                       alt="Edit Icon"
                     />

@@ -14,6 +14,7 @@ import { auth, createUserProfileDocument } from "./Firebase/firebase.utils";
 import { Redirect } from "react-router-dom";
 import CheckIncome from "./Pages/CheckIncome/CheckIncome";
 import CheckExpenses from "./Pages/CheckExpenses/CheckExpenses";
+import AllTransaction from "./Pages/AllTransactions/all_transaction";
 
 class App extends Component {
   state = {
@@ -61,6 +62,7 @@ class App extends Component {
             <Route path="/addData" component={AddData} />
             <Route path="/myIncome" component={CheckIncome} />
             <Route path="/myExpense" component={CheckExpenses} />
+            <Route path="/AllTransaction" component={AllTransaction} />
             <Route
               exact
               path="/"
