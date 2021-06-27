@@ -59,12 +59,21 @@ class App extends Component {
               () => this.props.currentUser ? ( <Redirect to="/"/>) :
               (<Register />)
             } />
-            <Route path="/addData" component={AddData} />
-            <Route path="/myIncome" component={CheckIncome} />
-            <Route path="/myExpense" component={CheckExpenses} />
-            <Route path="/AllTransaction" component={AllTransaction} />
+            <Route path="/addData" render={() => this.props.currentUser ?
+            (<AddData /> ) : (<h3>You Need To "SIGN IN" First 😅</h3>)  
+          }  />
+            <Route path="/myIncome" render={() => this.props.currentUser ?
+            (<CheckIncome /> ) : (<h3>You Need To "SIGN IN" First 😅</h3>)  
+          }  />
+            <Route path="/myExpense" render={() => this.props.currentUser ?
+            (<CheckExpenses /> ) : (<h3>You Need To "SIGN IN" First 😅</h3>)  
+          }  />
+            <Route path="/AllTransaction"
+            render={() => this.props.currentUser ?
+              (<AllTransaction /> ) : (<h3>You Need To "SIGN IN" First 😅</h3>)  
+            } />
             <Route
-              exact
+              exactz
               path="/"
               render={() => (
                 <div className="containers">
