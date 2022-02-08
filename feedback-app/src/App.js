@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import FeedbackList from "./Components/FeedbackList";
 import Header from "./Components/Header";
+import FeedBackData from "./data/FeedbackData";
 
 // function App(){
 //     return React.createElement('div',{className:'container'},
@@ -7,11 +9,12 @@ import Header from "./Components/Header";
 // }
 
 const App = () => {
+  const [feedback,setFeedback] = useState(FeedBackData);
   return (
     <>
-      <Header text="Hello World" />
+      <Header/>
       <div className="container">
-        <h1>My App</h1>
+        <FeedbackList feedback={feedback} />
       </div>
     </>
   );
