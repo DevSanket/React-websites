@@ -5,6 +5,8 @@ import FeedbackStats from "./Components/FeedbackStats";
 import Header from "./Components/Header";
 import FeedBackData from "./data/FeedbackData";
 import {v4 as uuidv4} from 'uuid';
+import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import AboutPage from "./Pages/AboutPage";
 
 // function App(){
 //     return React.createElement('div',{className:'container'},
@@ -24,14 +26,25 @@ const App = () => {
       setFeedback([newFeedback,...feedback]);
   }
   return (
-    <>
+    
+     <BrowserRouter>
       <Header/>
       <div className="container">
-        <FeedBackForm handleAdd={handleAdd}/>
+        <Routes>
+        <Route path='/' element={
+
+          <>
+          <FeedBackForm handleAdd={handleAdd}/>
         <FeedbackStats feedback={feedback} />
         <FeedbackList feedback={feedback} handleDelete={feedbackDelete}/>
+          </>
+
+        } />
+        <Route path="/about" element={<AboutPage/>} />
+        </Routes>
       </div>
-    </>
+     </BrowserRouter>
+ 
   );
 };
 
